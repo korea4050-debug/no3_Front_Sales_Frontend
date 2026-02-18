@@ -1,10 +1,26 @@
+/**
+ * ============================================
+ * CSS Module — page.module.css
+ * ============================================
+ *
+ * 파일명이 ".module.css"로 끝나면 Next.js가 "CSS Module"로 처리합니다.
+ * - 클래스명이 자동으로 고유하게 변환되어, 이 스타일은 이 파일을 import한 컴포넌트에만 적용됩니다.
+ * - 다른 페이지/컴포넌트의 .page, .main 같은 이름과 충돌하지 않습니다.
+ *
+ * 사용 예 (해당 페이지에서):
+ *   import styles from "./page.module.css";
+ *   <div className={styles.page}>...</div>
+ *
+ * 현재 레이아웃에서 홈은 단순 텍스트만 있어 이 스타일을 쓰지 않을 수 있습니다.
+ * 나중에 홈을 꾸밀 때 import해서 사용하면 됩니다.
+ */
+
+/* 페이지 전체 컨테이너 */
 .page {
   --background: #fafafa;
   --foreground: #fff;
-
   --text-primary: #000;
   --text-secondary: #666;
-
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
   --button-secondary-border: #ebebeb;
@@ -17,6 +33,7 @@
   background-color: var(--background);
 }
 
+/* 메인 콘텐츠 영역 */
 .main {
   display: flex;
   min-height: 100vh;
@@ -29,6 +46,7 @@
   padding: 120px 60px;
 }
 
+/* 인트로 섹션 (제목, 설명) */
 .intro {
   display: flex;
   flex-direction: column;
@@ -60,6 +78,7 @@
   color: var(--text-primary);
 }
 
+/* CTA(버튼/링크) 그룹 */
 .ctas {
   display: flex;
   flex-direction: row;
@@ -83,17 +102,19 @@
   font-weight: 500;
 }
 
+/* primary 버튼 스타일 */
 a.primary {
   background: var(--text-primary);
   color: var(--background);
   gap: 8px;
 }
 
+/* secondary 버튼 스타일 */
 a.secondary {
   border-color: var(--button-secondary-border);
 }
 
-/* Enable hover only on non-touch devices */
+/* 터치가 아닌 디바이스에서만 호버 효과 (터치에서는 호버 깜빡임 방지) */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
     background: var(--button-primary-hover);
@@ -106,6 +127,7 @@ a.secondary {
   }
 }
 
+/* 화면이 600px 이하일 때 패딩·글자 크기 조정 (반응형) */
 @media (max-width: 600px) {
   .main {
     padding: 48px 24px;
@@ -122,6 +144,7 @@ a.secondary {
   }
 }
 
+/* 다크 모드일 때 이 페이지 전용 변수 변경 */
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
@@ -130,10 +153,8 @@ a.secondary {
   .page {
     --background: #000;
     --foreground: #000;
-
     --text-primary: #ededed;
     --text-secondary: #999;
-
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
     --button-secondary-border: #1a1a1a;

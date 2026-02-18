@@ -1,27 +1,36 @@
 {
+  // ========== 컴파일 옵션 ==========
   "compilerOptions": {
+    // JavaScript 출력 버전 (ES2017 = ES8)
     "target": "ES2017",
+    // 사용할 타입 정의 라이브러리 (브라우저 DOM, 최신 JS)
     "lib": ["dom", "dom.iterable", "esnext"],
+    // .js 파일도 타입 체크 대상에 포함
     "allowJs": true,
+    // node_modules 등 외부 라이브러리 타입 검사 생략 (빌드 속도)
     "skipLibCheck": true,
+    // 엄격한 타입 검사 활성화 (권장)
     "strict": true,
+    // .js 파일 생성 안 함 (Next.js가 빌드 담당)
     "noEmit": true,
+    // CommonJS와 ES Module 상호 호환
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    // import로 .json 파일 불러오기 허용
     "resolveJsonModule": true,
     "isolatedModules": true,
+    // JSX 문법 변환 방식 (React 17+ 스타일)
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    // Next.js 전용 플러그인
+    "plugins": [{ "name": "next" }],
+    // 경로 별칭: @/components/Sidebar → src/components/Sidebar
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+  // 컴파일 대상 파일/폴더
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -30,5 +39,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
+  // 제외 (node_modules는 제외)
   "exclude": ["node_modules"]
 }
